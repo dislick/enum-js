@@ -3,6 +3,10 @@ var Enum = function(enums) {
   this.createEnumerables();
 }
 
+Enum.prototype.toString = function() {
+  return this.name;
+}
+
 Enum.prototype.createEnumerables = function() {
   // get reference to this object
   // for later use in .forEach loop
@@ -13,7 +17,7 @@ Enum.prototype.createEnumerables = function() {
   // in the enum array. the empty object makes
   // each property individual.
   this.enums.forEach(function(enumName) {
-    root[enumName] = {};
+    root[enumName] = { toString: root.toString, name: enumName };
   });
 
   // freeze the object to ensure type safety
