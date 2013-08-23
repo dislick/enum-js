@@ -47,8 +47,13 @@ Returns all available enums as strings. You won't get any references with this m
 Customization
 -------------
 
-### bool finalize
+### finalize
 
-Default: true
+Datatype: `Boolean`
+Default: `true`
+
+```
+var enumerableObject = new Enum([], { finalize: false });
+```
 
 Finalizes your enum object so it is write protected. Ensures type safety.
