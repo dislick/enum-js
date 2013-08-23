@@ -7,7 +7,7 @@ Enum.prototype.createEnumerables = function() {
   var root = this;
 
   this.enums.forEach(function(enumName) {
-    this[enumName] = {};
+    root[enumName] = {};
   });
 
   Object.freeze(this);
