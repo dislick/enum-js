@@ -1,15 +1,23 @@
+// constructor
 var Enum = function(enums) {
-  this.enums = enums;
-  this.createEnumerables();
+  if (enums) {
+    this.enums = enums;
+    this.createEnumerables();
+  }
 }
 
-Enum.prototype.toString = function() {
+Enum.prototype.toString = function () {
   // simply return the property 'name' that
   // gets created in the forEach loop in createEnumerables()
   return this.name;
 }
 
-Enum.prototype.createEnumerables = function() {
+// shortcut to get a property by its name
+Enum.prototype.getByName = function (name) {
+  return this[name];
+}
+
+Enum.prototype.createEnumerables = function () {
   // get reference to this object
   // for later use in .forEach loop
   var root = this;
