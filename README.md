@@ -42,3 +42,13 @@ Days.getNames();
 ```
 
 Returns all available enums as strings. You won't get any references with this method, just pure strings.
+
+
+Customization
+-------------
+
+### bool finalize
+
+Default: true
+
+Finalizes your enum object so it is write protected. Ensures type safety.
