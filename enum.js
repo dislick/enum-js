@@ -57,7 +57,9 @@ Enum.prototype.createEnumerables = function () {
   });
 
   // freeze the object to ensure type safety
-  if (this.finalize) {
+  if (this.finalize && Object.freeze) {
     Object.freeze(this);
+  } else if (!Object.freeze) {
+    console.log('Enum.js: Finalizing objects not supported.');
   }
 }
