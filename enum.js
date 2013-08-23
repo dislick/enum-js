@@ -12,8 +12,9 @@ var Enum = function(enums, options) {
 
 // set settings passed by the user
 Enum.prototype.setOptions = function(options) {
+  // loop attributes in object 'options'
   for (attribute in options) {
-    if (options.hasOwnProperty(attribute)){
+    if (options.hasOwnProperty(attribute)) {
       this[attribute] = options[attribute];
     }
   }
