@@ -4,6 +4,8 @@ var Enum = function(enums) {
 }
 
 Enum.prototype.toString = function() {
+  // simply return the property 'name' that
+  // gets created in the forEach loop in createEnumerables()
   return this.name;
 }
 
