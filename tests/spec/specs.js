@@ -31,3 +31,11 @@ describe('The toString() method', function() {
   });
 });
 
+describe('The getByName() method', function() {
+  it('should return the real reference by a string', function() {
+    var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+    var output = Days.getByName('Monday');
+
+    expect(output).toEqual(Days.Monday);
+  });
+});
