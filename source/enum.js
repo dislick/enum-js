@@ -28,29 +28,29 @@
   }
 
   // set default properties
-  this.Enum.prototype.setDefaults = function () {
+  this.Enum.prototype.setDefaults = function() {
     this.finalize = true;
   }
 
   // get the name of a property
-  this.Enum.prototype.toString = function () {
+  this.Enum.prototype.toString = function() {
     // simply return the property 'name' that
     // gets created in the forEach loop in createEnumerables()
     return this.name;
   }
 
   // shortcut to get a property by its name
-  this.Enum.prototype.getByName = function (name) {
+  this.Enum.prototype.getByName = function(name) {
     return this[name];
   }
 
   // get all enum names in an array
   // does not return the actual reference
-  this.Enum.prototype.getNames = function () {
+  this.Enum.prototype.getNames = function() {
     return this.enums;
   }
 
-  this.Enum.prototype.createEnumerables = function () {
+  this.Enum.prototype.createEnumerables = function() {
     // get reference to this object
     // for later use in .forEach loop
     var root = this;
