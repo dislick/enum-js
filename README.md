@@ -11,6 +11,8 @@ API
 
 ### Constructor
 
+You can create enums using an array of enum names (Strings).
+
 ```
 new Enum(enumNames, [options])
 ```
@@ -23,13 +25,33 @@ var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ], { finalize: false });
 var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ], { startIndex: 1 });
 ```
 
+Sometimes you want the enum to have a friendly textual representation which is different from it's name.
+For those cases, the enum array can be an array of objects, which have 2 properties - name & text
+
+```
+new Enum(enumObjects, [options])
+```
+
+```
+var Foo = new Enum([ { name: 'Bar', text: 'Bar text' }, { name: 'Baz', text: 'Baz text' } ]);
+```
+
 ### enum.toString
 
 ```
 Days.Monday.toString();
 ```
 
-Returns a string representation of the enum.
+Returns a string representation of the enum name.
+
+### enum.toText
+
+```
+Days.Monday.toText();
+```
+
+Returns the textual representation of the enum. If the enum was created with an Array of names (Strings), the text will
+equal the name. If the enum was created with an Array of objects, it will equal the text value passed.
 
 ### enum.toOrdinal
 

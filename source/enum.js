@@ -47,6 +47,13 @@
         return this.ordinal;
     }
 
+    // get the textual representation of a property
+    this.Enum.prototype.toText = function () {
+        // simply return the property 'text' that
+        // gets created in the forEach loop in createEnumerables()
+        return this.text;
+    }
+
     // shortcut to get a property by its name
     this.Enum.prototype.getByName = function (name) {
         return this[name];
@@ -55,7 +62,7 @@
     // shortcut to get a property by its ordinal value
     this.Enum.prototype.getByOrdinal = function (ordinalVal) {
         //get the name of the enum based on its index in the array
-        var name = this.enums[ordinalVal-this.startIndex];
+        var name = this.enums[ordinalVal - this.startIndex];
         //return the enum by its name
         return this.getByName(name);
     }
@@ -75,15 +82,33 @@
         // create a new property for each enum
         // in the enum array. the empty object makes
         // each property individual.
-        this.enums.forEach(function (enumName, idx) {
-            root[enumName] = { toString: root.toString, name: enumName, toOrdinal: root.toOrdinal, ordinal: idx + root.startIndex};
+        this.enums.forEach(function (item, idx) {
+            var name;
+            var text;
+
+            if (typeof(item) === "string") {
+                name = item;
+                text = item;
+            }
+            else if (typeof(item) === "object"){
+                name = item.name;
+                text = item.text;
+            }
+            root[name] = {
+                toString: root.toString,
+                toOrdinal: root.toOrdinal,
+                toText: root.toText,
+                ordinal: idx + root.startIndex,
+                name: name,
+                text: text
+            };
         });
 
         // freeze the object to ensure type safety
         if (this.finalize && Object.freeze) {
             Object.freeze(this);
         } else if (!Object.freeze) {
-            if (console && console.log){
+            if (console && console.log) {
                 console.log('Enum.js: Finalizing objects not supported.');
             }
         }

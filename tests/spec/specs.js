@@ -26,14 +26,28 @@ describe('The constructor', function () {
         expect(Days.Monday.toOrdinal()).toEqual(startIndex);
         expect(Days.Wednesday.toOrdinal()).toEqual(startIndex + 2);
     });
+    it('should accept an array of objects with name and text values as enums', function () {
+        var Days = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+
+        Days.Monday = Days.Tuesday;
+        expect(Days.Monday).toEqual(Days.Monday);
+        expect(Days.Monday.toOrdinal()).toEqual(0);
+        expect(Days.Monday.toString()).toEqual('Monday');
+        expect(Days.Monday.toText()).toEqual('The second day');
+    });
 });
 
 describe('The toString() method', function () {
     it('should return the name of the enum as a string', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.Monday.toString();
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.Monday.toString();
 
-        expect(output).toEqual('Monday');
+        expect(output1).toEqual('Monday');
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.Monday.toString();
+
+        expect(output2).toEqual('Monday');
     });
 
     it('should not return the actual reference', function () {
@@ -45,16 +59,42 @@ describe('The toString() method', function () {
 });
 
 describe('The toOrdinal() method', function () {
-    it('should return the ordinal value of the enum as an Number', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.Monday.toOrdinal();
+    it('should return the ordinal value of the enum as a Number', function () {
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.Monday.toOrdinal();
 
-        expect(output).toEqual(0);
+        expect(output1).toEqual(0);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.Monday.toOrdinal();
+
+        expect(output2).toEqual(0);
     });
 
     it('should not return the actual reference', function () {
         var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
         var output = Days.Monday.toOrdinal();
+
+        expect(output === Days.Monday).toBe(false);
+    });
+});
+
+describe('The toText() method', function () {
+    it('should return the textual representation of the enum as a String', function () {
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.Monday.toText();
+
+        expect(output1).toEqual('Monday');
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.Monday.toText();
+
+        expect(output2).toEqual('The second day');
+    });
+
+    it('should not return the actual reference', function () {
+        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output = Days.Monday.toText();
 
         expect(output === Days.Monday).toBe(false);
     });
