@@ -126,3 +126,13 @@ describe('The getNames() method', function () {
         expect(Days.getNames()).toEqual(enumArray);
     });
 });
+
+describe('The contains() method', function () {
+    it('should return if the Enum contains the enum name', function () {
+        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+
+        expect(Days.contains('Monday')).toEqual(true);
+        expect(Days.contains('monday')).toEqual(false);
+        expect(Days.contains('Sunday')).toEqual(false);
+    });
+});

@@ -73,6 +73,11 @@
         return this.enums;
     }
 
+    // return true if enum contains a value with name
+    this.Enum.prototype.contains = function (name) {
+        return typeof(this.getByName(name)) !== "undefined";
+    }
+
     this.Enum.prototype.createEnumerables = function () {
         // get reference to this object
         // for later use in .forEach loop

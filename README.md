@@ -26,7 +26,7 @@ var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ], { startIndex: 1 });
 ```
 
 Sometimes you want the enum to have a friendly textual representation which is different from it's name.
-For those cases, the enum array can be an array of objects, which have 2 properties - name & text
+For those cases, the enum array can be an array of objects, which have 2 properties - name & text.
 
 ```
 new Enum(enumObjects, [options])
@@ -85,6 +85,13 @@ Days.getNames();
 
 Returns all available enums as strings. You won't get any references with this method, just pure strings.
 
+### contains
+
+```
+Days.contains('Monday');
+```
+
+Returns true if the Enum contains the the enum name passed.
 
 Customization
 -------------
@@ -109,4 +116,4 @@ Default: `0`
 var enumerableObject = new Enum([], { startIndex: 1 });
 ```
 
-Will start the ordinal values from startIndex
+Will start the ordinal values from startIndex.
