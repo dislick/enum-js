@@ -2,6 +2,7 @@
 
 //     (c) 2013 Patrick Muff
 //     enum.js may be freely distributed under the MIT license.
+//     forked by Elan Hami at: https://github.com/elanhami/enum-js
 
 (function () {
 
