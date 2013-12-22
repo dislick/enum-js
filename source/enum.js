@@ -62,7 +62,8 @@
     // shortcut to get a property by its ordinal value
     this.Enum.prototype.getByOrdinal = function (ordinalVal) {
         //get the name of the enum based on its index in the array
-        var name = this.enums[ordinalVal - this.startIndex];
+        var names = this.getNames();
+        var name = names[ordinalVal - this.startIndex];
         //return the enum by its name
         return this.getByName(name);
     }
@@ -70,7 +71,7 @@
     // get all enum names in an array
     // does not return the actual reference
     this.Enum.prototype.getNames = function () {
-        return this.enums;
+        return this.enumNames;
     }
 
     // return true if enum contains a value with name
@@ -82,6 +83,8 @@
         // get reference to this object
         // for later use in .forEach loop
         var root = this;
+        //store enum names for method getNames
+        root.enumNames = [];
 
         // loop the input array and
         // create a new property for each enum
@@ -107,6 +110,7 @@
                 name: name,
                 text: text
             };
+            root.enumNames.push(name);
         });
 
         // freeze the object to ensure type safety

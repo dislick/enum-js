@@ -51,10 +51,15 @@ describe('The toString() method', function () {
     });
 
     it('should not return the actual reference', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.Monday.toString();
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.Monday.toString();
 
-        expect(output === Days.Monday).toBe(false);
+        expect(output1 === Days1.Monday).toBe(false);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.Monday.toString();
+
+        expect(output2 === Days2.Monday).toBe(false);
     });
 });
 
@@ -72,10 +77,15 @@ describe('The toOrdinal() method', function () {
     });
 
     it('should not return the actual reference', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.Monday.toOrdinal();
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.Monday.toOrdinal();
 
-        expect(output === Days.Monday).toBe(false);
+        expect(output1 === Days1.Monday).toBe(false);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.Monday.toOrdinal();
+
+        expect(output2 === Days2.Monday).toBe(false);
     });
 });
 
@@ -93,46 +103,74 @@ describe('The toText() method', function () {
     });
 
     it('should not return the actual reference', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.Monday.toText();
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.Monday.toText();
 
-        expect(output === Days.Monday).toBe(false);
+        expect(output1 === Days1.Monday).toBe(false);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.Monday.toText();
+
+        expect(output2 === Days2.Monday).toBe(false);
     });
 });
 
 describe('The getByName() method', function () {
     it('should return the actual reference by a string', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.getByName('Monday');
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.getByName('Monday');
 
-        expect(output).toEqual(Days.Monday);
+        expect(output1).toEqual(Days1.Monday);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.getByName('Monday');
+
+        expect(output2).toEqual(Days2.Monday);
     });
 });
 
 describe('The getByOrdinal() method', function () {
     it('should return the actual reference by the ordinal value', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
-        var output = Days.getByOrdinal(0);
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.getByOrdinal(0);
 
-        expect(output).toEqual(Days.Monday);
+        expect(output1).toEqual(Days1.Monday);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.getByOrdinal(0);
+
+        expect(output2).toEqual(Days2.Monday);
     });
 });
 
 describe('The getNames() method', function () {
     it('should return the initial array', function () {
-        var enumArray = [ 'Monday', 'Tuesday', 'Wednesday' ];
-        var Days = new Enum(enumArray);
+        var enumNames = [ 'Monday', 'Tuesday', 'Wednesday' ];
 
-        expect(Days.getNames()).toEqual(enumArray);
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var output1 = Days1.getNames();
+
+        expect(output1).toEqual(enumNames);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+        var output2 = Days2.getNames();
+
+        expect(output2).toEqual(enumNames);
     });
 });
 
 describe('The contains() method', function () {
     it('should return if the Enum contains the enum name', function () {
-        var Days = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
+        var Days1 = new Enum([ 'Monday', 'Tuesday', 'Wednesday' ]);
 
-        expect(Days.contains('Monday')).toEqual(true);
-        expect(Days.contains('monday')).toEqual(false);
-        expect(Days.contains('Sunday')).toEqual(false);
+        expect(Days1.contains('Monday')).toEqual(true);
+        expect(Days1.contains('monday')).toEqual(false);
+        expect(Days1.contains('Sunday')).toEqual(false);
+
+        var Days2 = new Enum([ {name: 'Monday', text: 'The second day'}, {name: 'Tuesday', text: 'The third day'}, {name: 'Wednesday', text: 'The fourth day'} ]);
+
+        expect(Days2.contains('Monday')).toEqual(true);
+        expect(Days2.contains('monday')).toEqual(false);
+        expect(Days2.contains('Sunday')).toEqual(false);
     });
 });
