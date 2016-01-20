@@ -1,6 +1,11 @@
 enum.js
 =======
 
+Warning
+-------
+
+This repository is no longer needed since the introduction of [ES6 Symbols](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol).
+
 What's this?
 ----
 
